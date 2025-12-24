@@ -198,24 +198,6 @@ body {
     font-family: "Space Mono", monospace;
 }
 
-.quote-container {
-    text-align: center;
-    margin: 3rem 0 2rem;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.quote {
-    font-size: 1.25rem;
-    color: var(--forest-green);
-    font-style: italic;
-    opacity: 0.8;
-    max-width: 500px;
-    transition: opacity 0.5s ease;
-}
-
 .christmas-arrived {
     text-align: center;
     padding: 3rem 2rem;
@@ -305,10 +287,6 @@ body {
     .time-label {
         font-size: 0.75rem;
         letter-spacing: 2px;
-    }
-
-    .quote {
-        font-size: 1rem;
     }
 
     .arrived-message h2 {

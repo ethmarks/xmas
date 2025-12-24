@@ -21,17 +21,7 @@
             minutes: 0,
             seconds: 0,
             isChristmas: false,
-            randomQuotes: [
-                'The stockings are almost hung...',
-                'Santa\'s checking his list twice...',
-                'The elves are working overtime...',
-                'Reindeer are warming up...',
-                'The North Pole is preparing...',
-                'Magic is in the air...',
-                'Cookies are waiting to be baked...',
-                'The sleigh is being polished...'
-            ],
-            currentQuote: '',
+
             updateCountdown() {
                 const now = new Date();
                 const currentYear = now.getFullYear();
@@ -57,11 +47,9 @@
                     this.seconds = Math.floor((diff % (1000 * 60)) / 1000);
                 }
             },
-            rotateQuote() {
-                this.currentQuote = this.randomQuotes[Math.floor(Math.random() * this.randomQuotes.length)];
-            }
+
          }"
-         x-init="updateCountdown(); setInterval(() => updateCountdown(), 1000); rotateQuote(); setInterval(() => rotateQuote(), 8000)">
+         x-init="updateCountdown(); setInterval(() => updateCountdown(), 1000)">
 
         <header class="header">
             <div class="date-display" x-text="new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })"></div>
@@ -93,10 +81,6 @@
                 <h2>Christmas Has Arrived</h2>
                 <p>May your day be filled with wonder, warmth, and joy.</p>
             </div>
-        </div>
-
-        <div class="quote-container" x-show="!isChristmas">
-            <p class="quote" x-text="currentQuote" x-transition></p>
         </div>
 
         <footer class="footer">
