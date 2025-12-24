@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "description": "A Christmas countdown clock",
   "main": "index.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ethmarks/xmas.git"
@@ -18,11 +13,5 @@
   "bugs": {
     "url": "https://github.com/ethmarks/xmas/issues"
   },
-  "homepage": "https://github.com/ethmarks/xmas#readme",
-  "devDependencies": {
-    "vite": "^7.3.0"
-  },
-  "dependencies": {
-    "alpinejs": "^3.15.3"
-  }
+  "homepage": "https://github.com/ethmarks/xmas#readme"
 }
