@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --deep-forest: #0a3d2c;
+    --forest-green: #165a3f;
+    --pine: #1a6b47;
+    --cream: #faf8f5;
+    --warm-white: #f5f1eb;
+    --gold: #d4af37;
+    --deep-red: #8b1e1e;
+    --charcoal: #2a2a2a;
+}
+
+body {
+    font-family: "Playfair Display", serif;
+    background: linear-gradient(
+        to bottom,
+        var(--deep-forest) 0%,
+        var(--forest-green) 50%,
+        var(--pine) 100%
+    );
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cream);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+        radial-gradient(
+            2px 2px at 20px 30px,
+            rgba(255, 255, 255, 0.7),
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 60px 70px,
+            rgba(255, 255, 255, 0.6),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 50px 50px,
+            rgba(255, 255, 255, 0.5),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 130px 80px,
+            rgba(255, 255, 255, 0.6),
+            transparent
+        ),
+        radial-gradient(
+            2px 2px at 80px 10px,
+            rgba(255, 255, 255, 0.7),
+            transparent
+        );
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: snowfall 20s linear infinite;
+}
+
+@keyframes snowfall {
+    from {
+        background-position:
+            0 0,
+            0 0,
+            0 0,
+            0 0,
+            0 0;
+    }
+    to {
+        background-position:
+            0 200px,
+            0 300px,
+            0 250px,
+            0 280px,
+            0 220px;
+    }
+}
+
+.container {
+    max-width: 900px;
+    width: 90%;
+    padding: 4rem 3rem;
+    background: rgba(250, 248, 245, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+    box-shadow:
+        0 0 1px rgba(0, 0, 0, 0.1),
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold),
+        transparent
+    );
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 2rem;
+}
+
+.date-display {
+    font-family: "Space Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--deep-forest);
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    opacity: 0.6;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.time-unit {
+    text-align: center;
+    position: relative;
+}
+
+.time-unit::after {
+    content: "";
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+}
+
+.time-value {
+    font-family: "Space Mono", monospace;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--deep-red);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -3px;
+}
+
+.time-label {
+    font-size: 0.875rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 0.5;
+    font-family: "Space Mono", monospace;
+}
+
+.quote-container {
+    text-align: center;
+    margin: 3rem 0 2rem;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote {
+    font-size: 1.25rem;
+    color: var(--forest-green);
+    font-style: italic;
+    opacity: 0.8;
+    max-width: 500px;
+    transition: opacity 0.5s ease;
+}
+
+.christmas-arrived {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.arrived-message h2 {
+    font-size: 3rem;
+    color: var(--deep-red);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.arrived-message p {
+    font-size: 1.25rem;
+    color: var(--charcoal);
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.footer {
+    margin-top: 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.decorative-line {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold),
+        transparent
+    );
+    margin-bottom: 1.5rem;
+}
+
+.year {
+    font-family: "Space Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--charcoal);
+    opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 2.5rem 1.5rem;
+        width: 95%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.5rem;
+    }
+
+    .time-value {
+        font-size: 3.5rem;
+    }
+
+    .time-label {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+
+    .arrived-message h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+        letter-spacing: -1px;
+    }
+
+    .subtitle {
+        font-size: 0.875rem;
+    }
+
+    .countdown {
+        gap: 1.5rem 1rem;
+    }
+
+    .time-value {
+        font-size: 2.5rem;
+    }
+}

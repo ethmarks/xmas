@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Countdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="snow" aria-hidden="true"></div>
+
+    <div class="container"
+         x-data="{
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            isChristmas: false,
+            randomQuotes: [
+                'The stockings are almost hung...',
+                'Santa\'s checking his list twice...',
+                'The elves are working overtime...',
+                'Reindeer are warming up...',
+                'The North Pole is preparing...',
+                'Magic is in the air...',
+                'Cookies are waiting to be baked...',
+                'The sleigh is being polished...'
+            ],
+            currentQuote: '',
+            updateCountdown() {
+                const now = new Date();
+                const currentYear = now.getFullYear();
+                let christmas = new Date(currentYear, 11, 25, 0, 0, 0);
+
+                if (now > christmas) {
+                    christmas = new Date(currentYear + 1, 11, 25, 0, 0, 0);
+                }
+
+                const diff = christmas - now;
+
+                if (diff <= 0) {
+                    this.isChristmas = true;
+                    this.days = 0;
+                    this.hours = 0;
+                    this.minutes = 0;
+                    this.seconds = 0;
+                } else {
+                    this.isChristmas = false;
+                    this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    this.hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    this.seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+            },
+            rotateQuote() {
+                this.currentQuote = this.randomQuotes[Math.floor(Math.random() * this.randomQuotes.length)];
+            }
+         }"
+         x-init="updateCountdown(); setInterval(() => updateCountdown(), 1000); rotateQuote(); setInterval(() => rotateQuote(), 8000)">
+
+        <header class="header">
+            <div class="date-display" x-text="new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })"></div>
+            <h1 class="title">Christmas Eve</h1>
+            <div class="subtitle">A Countdown to Wonder</div>
+        </header>
+
+        <div x-show="!isChristmas" x-transition class="countdown">
+            <div class="time-unit">
+                <div class="time-value" x-text="days.toString().padStart(2, '0')">00</div>
+                <div class="time-label">Days</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" x-text="hours.toString().padStart(2, '0')">00</div>
+                <div class="time-label">Hours</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" x-text="minutes.toString().padStart(2, '0')">00</div>
+                <div class="time-label">Minutes</div>
+            </div>
+            <div class="time-unit">
+                <div class="time-value" x-text="seconds.toString().padStart(2, '0')">00</div>
+                <div class="time-label">Seconds</div>
+            </div>
+        </div>
+
+        <div x-show="isChristmas" x-transition class="christmas-arrived">
+            <div class="arrived-message">
+                <h2>Christmas Has Arrived</h2>
+                <p>May your day be filled with wonder, warmth, and joy.</p>
+            </div>
+        </div>
+
+        <div class="quote-container" x-show="!isChristmas">
+            <p class="quote" x-text="currentQuote" x-transition></p>
+        </div>
+
+        <footer class="footer">
+            <div class="decorative-line"></div>
+            <div class="year" x-text="new Date().getFullYear()"></div>
+        </footer>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
