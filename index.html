@@ -22,7 +22,7 @@
             seconds: 0,
             isChristmas: false,
             title: 'Christmas Eve',
-            subtitle: 'A Countdown to Wonder',
+            subtitle: 'A Countdown to Christmas',
 
             updateCountdown() {
                 const now = new Date();
@@ -42,7 +42,7 @@
                 } else {
                     this.isChristmas = false;
                     this.title = 'Christmas Eve';
-                    this.subtitle = 'A Countdown to Wonder';
+                    this.subtitle = 'A Countdown to Christmas';
                     this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
                     this.hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -56,7 +56,7 @@
         <header class="header">
             <div class="date-display" x-text="new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })"></div>
             <h1 class="title" x-text="title" :class="{ 'christmas-arrived': isChristmas }">Christmas Eve</h1>
-            <div class="subtitle" x-text="subtitle">A Countdown to Wonder</div>
+            <div class="subtitle" x-text="subtitle">A Countdown to Christmas</div>
         </header>
 
         <div class="countdown">
