@@ -29,10 +29,6 @@
                 const currentYear = now.getFullYear();
                 let christmas = new Date(currentYear, 11, 25, 0, 0, 0);
 
-                if (now > christmas) {
-                    christmas = new Date(currentYear + 1, 11, 25, 0, 0, 0);
-                }
-
                 const diff = christmas - now;
 
                 if (diff <= 0) {
@@ -63,7 +59,7 @@
             <div class="subtitle" x-text="subtitle">A Countdown to Wonder</div>
         </header>
 
-        <div x-show="!isChristmas" x-transition class="countdown">
+        <div class="countdown">
             <div class="time-unit">
                 <div class="time-value" x-text="days.toString().padStart(2, '0')">00</div>
                 <div class="time-label">Days</div>
@@ -79,13 +75,6 @@
             <div class="time-unit">
                 <div class="time-value" x-text="seconds.toString().padStart(2, '0')">00</div>
                 <div class="time-label">Seconds</div>
-            </div>
-        </div>
-
-        <div x-show="isChristmas" x-transition class="christmas-arrived">
-            <div class="arrived-message">
-                <h2>Christmas Has Arrived</h2>
-                <p>May your day be filled with wonder, warmth, and joy.</p>
             </div>
         </div>
 
