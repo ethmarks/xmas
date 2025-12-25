@@ -144,6 +144,7 @@ body {
     letter-spacing: -2px;
     margin-bottom: 0.5rem;
     line-height: 1;
+    transition: color 1s ease;
 }
 
 .subtitle {
@@ -153,6 +154,10 @@ body {
     opacity: 0.6;
     font-style: italic;
     letter-spacing: 1px;
+}
+
+.title.christmas-arrived {
+    color: var(--deep-red);
 }
 
 .countdown {

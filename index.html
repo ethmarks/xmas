@@ -55,7 +55,7 @@
 
         <header class="header">
             <div class="date-display" x-text="new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })"></div>
-            <h1 class="title" x-text="title">Christmas Eve</h1>
+            <h1 class="title" x-text="title" :class="{ 'christmas-arrived': isChristmas }">Christmas Eve</h1>
             <div class="subtitle" x-text="subtitle">A Countdown to Wonder</div>
         </header>
 
