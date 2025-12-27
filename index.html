@@ -17,6 +17,7 @@
     <div class="container"
          x-data="{
             dateString: new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }),
+            currentYear: new Date().getFullYear(),
             days: 0,
             hours: 0,
             minutes: 0,
@@ -27,14 +28,13 @@
 
             updateCountdown() {
                 const now = new Date();
-                const currentYear = now.getFullYear();
-                const beforeBoxingDay = (now < new Date(currentYear, 11, 26, 0, 0, 0));
+                const beforeBoxingDay = (now < new Date(this.currentYear, 11, 26, 0, 0, 0));
                 const isChristmasEve = beforeBoxingDay && now.getDate() === 24;
                 const isChristmasDay = !beforeBoxingDay && now.getDate() === 25;
 
                 let christmas = beforeBoxingDay
-                    ? new Date(currentYear, 11, 25, 0, 0, 0)
-                    : new Date(currentYear + 1, 11, 25, 0, 0, 0);
+                    ? new Date(this.currentYear, 11, 25, 0, 0, 0)
+                    : new Date(this.currentYear + 1, 11, 25, 0, 0, 0);
 
                 const diff = christmas - now;
 
@@ -101,7 +101,7 @@
             <div class="credits">
                 Created by <a href="https://github.com/ethmarks" target="_blank" rel="noopener noreferrer">ethmarks</a>
             </div>
-            <div class="year" x-text="new Date().getFullYear()"></div>
+            <div class="year" x-text="currentYear"></div>
         </footer>
     </div>
 
