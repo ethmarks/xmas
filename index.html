@@ -22,13 +22,15 @@
             minutes: 0,
             seconds: 0,
             isChristmas: false,
-            title: 'Christmas Eve',
-            subtitle: 'A Countdown to Christmas',
+            title: '',
+            subtitle: '',
 
             updateCountdown() {
                 const now = new Date();
                 const currentYear = now.getFullYear();
                 const beforeBoxingDay = (now < new Date(currentYear, 11, 26, 0, 0, 0));
+                const isChristmasEve = beforeBoxingDay && now.getDate() === 24;
+                const isChristmasDay = !beforeBoxingDay && now.getDate() === 25;
 
                 let christmas = beforeBoxingDay
                     ? new Date(currentYear, 11, 25, 0, 0, 0)
@@ -36,22 +38,29 @@
 
                 const diff = christmas - now;
 
-                if (diff <= 0) {
+                if (isChristmasDay) {
                     this.isChristmas = true;
-                    this.title = 'Christmas Day';
-                    this.subtitle = 'Merry Christmas';
                     this.days = 0;
                     this.hours = 0;
                     this.minutes = 0;
                     this.seconds = 0;
                 } else {
                     this.isChristmas = false;
-                    this.title = 'Christmas Eve';
-                    this.subtitle = 'A Countdown to Christmas';
                     this.days = Math.floor(diff / (1000 * 60 * 60 * 24));
                     this.hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                     this.seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                }
+
+                if (isChristmasDay) {
+                    this.title = 'Christmas Day';
+                    this.subtitle = 'Merry Christmas';
+                } else if (isChristmasEve) {
+                    this.title = 'Christmas Eve';
+                    this.subtitle = 'A Countdown to Christmas';
+                } else {
+                    this.title = 'Not Christmas Yet';
+                    this.subtitle = 'A Countdown to Christmas';
                 }
             },
 
