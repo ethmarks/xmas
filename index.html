@@ -69,28 +69,32 @@
 
         <header class="header">
             <div class="date-display" x-text="dateString"></div>
-            <h1 class="title" x-text="title" :class="{ 'christmas-arrived': isChristmas }">Christmas Eve</h1>
-            <div class="subtitle" x-text="subtitle">A Countdown to Christmas</div>
+            <h1 class="title" x-text="title" :class="{ 'christmas-arrived': isChristmas }">Not Christmas Yet*</h1>
+            <div class="subtitle" x-text="subtitle">*99.73% Accurate</div>
         </header>
 
         <div class="countdown">
             <div class="time-unit">
-                <div class="time-value" x-text="days.toString().padStart(2, '0')">00</div>
+                <div class="time-value" x-text="days.toString().padStart(2, '0')">??</div>
                 <div class="time-label">Days</div>
             </div>
             <div class="time-unit">
-                <div class="time-value" x-text="hours.toString().padStart(2, '0')">00</div>
+                <div class="time-value" x-text="hours.toString().padStart(2, '0')">??</div>
                 <div class="time-label">Hours</div>
             </div>
             <div class="time-unit">
-                <div class="time-value" x-text="minutes.toString().padStart(2, '0')">00</div>
+                <div class="time-value" x-text="minutes.toString().padStart(2, '0')">??</div>
                 <div class="time-label">Minutes</div>
             </div>
             <div class="time-unit">
-                <div class="time-value" x-text="seconds.toString().padStart(2, '0')">00</div>
+                <div class="time-value" x-text="seconds.toString().padStart(2, '0')">??</div>
                 <div class="time-label">Seconds</div>
             </div>
         </div>
+
+        <noscript>
+            <p x-show=false>Please enable JavaScript for full functionality</p>
+        </noscript>
 
         <footer class="footer">
             <div class="decorative-line"></div>
