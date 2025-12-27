@@ -27,7 +27,11 @@
             updateCountdown() {
                 const now = new Date();
                 const currentYear = now.getFullYear();
-                let christmas = new Date(currentYear, 11, 25, 0, 0, 0);
+                const beforeBoxingDay = (now < new Date(currentYear, 11, 26, 0, 0, 0));
+
+                let christmas = beforeBoxingDay
+                    ? new Date(currentYear, 11, 25, 0, 0, 0)
+                    : new Date(currentYear + 1, 11, 25, 0, 0, 0);
 
                 const diff = christmas - now;
 
