@@ -205,7 +205,7 @@ body {
     font-family: "Space Mono", monospace;
 }
 
-noscript p {
+#noscript {
     font-family: "Space Mono", monospace;
     text-align: center;
     color: var(--deep-forest);
