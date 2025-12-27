@@ -170,6 +170,8 @@ body {
 .time-unit {
     text-align: center;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .time-unit::after {
