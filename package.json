@@ -1,17 +1,12 @@
 {
   "name": "xmas",
   "version": "1.0.0",
+  "private": true,
   "description": "A Christmas countdown clock",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ethmarks/xmas.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ethmarks/xmas/issues"
-  },
-  "homepage": "https://github.com/ethmarks/xmas#readme"
+  "author": "ethmarks",
+  "license": "Apache 2.0"
 }
